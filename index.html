@@ -27,7 +27,7 @@
             
             <div data-role="content">
                 <div id="search_bar">
-                    <input type="search" name="search" id="search-basic" value="" />
+                    <input type="search" name="search_input" id="search-basic" value="" />
                 </div>
                 <div class="ui-grid-a ui-responsive">
                     <div class="ui-block-a">
@@ -88,5 +88,54 @@
                     player.stopVideo();
                   }            
         </script>        
+        
+                <script type="text/javascript">
+                // when you type in the filter
+                $('#search_input').on('keyup', function(){
+                    var form_data = {
+                        keyword : $('#search_input').val(),
+                    };
+                    
+                    alert($('#search_input').val());
+
+                    $.ajax({
+                            url: "/explorer/edit_notes",
+                            type: 'POST',
+                            async : true,
+                            data: form_data
+                            });
+                });
+
+                $('#menu_groups').on("change", function(){
+                    $(this).children("option").each(function(){
+                        if (!isNaN($(this).attr('group_id'))) {
+                            var form_data = {
+                                group_id : $(this).attr('group_id'),
+                                card_id : <?=$cardtoview['id']?>,
+                                value :  $(this).val(),
+                                selected : $(this).prop('selected')
+                            };
+
+                            $.ajax({
+                                url: "/explorer/check_group",
+                                type: 'POST',
+                                async : true,
+                                data: form_data
+                            })
+                        };
+                    });
+                    <?
+                        if ($from_page == 'deck') {
+                            ?>
+                                $("#back_button").removeAttr('data-rel', 'true');
+                                $("#back_button").prop('href', '/deck#contact_book');
+                                $("#back_button").prop('data-ajax', 'false');
+                            <?
+                        }
+                    ?>
+                });
+</script>
+
+        
     </body>
 </html>
