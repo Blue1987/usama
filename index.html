@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>onesecplaylist</title>
+        <link rel="icon" href="img/logo.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="libs/flatui/jquery.mobile.flatui.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <script src="libs/jquery-1.10.2.min.js"></script>
+        <script src="libs/jquery.mobile-1.3.2.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="/libs/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <script type="text/javascript">
+        /* page custom initial scripts */
+    </script>
+    <body>
+        <div data-role="page" id="page1">            
+            <div data-theme="a" data-role="header">                
+                <div id="logo">
+                    usama's list
+                </div>
+            </div>
+            
+            
+            <div data-role="content">
+                <div id="search_bar">
+                    <input type="search" name="search" id="search-basic" value="" />
+                </div>
+                <div class="ui-grid-a ui-responsive">
+                    <div class="ui-block-a">
+                        <div id="playlists_list">                                           
+                            <ul data-role="listview" data-divider-theme="a">
+                                &nbsp;
+                                <li data-role="list-divider"><a href="index.html">Play</a></li>
+                                <li><a href="#">Acura</a></li>
+                                <li><a href="#">Audi</a></li>
+                                <li><a href="#">BMW</a></li>
+                                <li><a href="#">Cadillac</a></li>
+                                &nbsp;
+                            <ul data-role="listview" style="">
+                        </div>
+                    </div>
+                    <div class="ui-block-b" style="padding-left: 16px; padding-top: 5px">
+                        <div id="player"></div>
+                    </div>
+                </div>
+            </div>
+        
+        <div id="footer">
+            <A HREF="/info/about" data-ajax="false">about</A> | <A HREF="/info/FAQ" data-ajax="false">FAQ</A> | <A HREF="/info/termsofuse" data-ajax="false">terms of use</A> | <A HREF="/info/privacypolicy" data-ajax="false">privacy policy</A>
+        </div>                
+        
+        <script type="text/javascript">
+            /* common final scripts */
+                  var tag = document.createElement('script');
+                  tag.src = "https://www.youtube.com/iframe_api";
+                  var firstScriptTag = document.getElementsByTagName('script')[0];
+                  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                  var player;
+                  function onYouTubeIframeAPIReady() {
+                    player = new YT.Player('player', {
+                      height: '390',
+                      width: '640',
+                      videoId: 'M7lc1UVf-VE',
+                      events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange
+                      }
+                    });
+                  }
+
+                  function onPlayerReady(event) {
+                    event.target.playVideo();
+                  }
+
+                  var done = false;
+                  function onPlayerStateChange(event) {
+                    if (event.data == YT.PlayerState.PLAYING && !done) {
+                      setTimeout(stopVideo, 6000);
+                      done = true;
+                    }
+                  }
+                  function stopVideo() {
+                    player.stopVideo();
+                  }            
+        </script>        
+    </body>
+</html>

@@ -1,0 +1,45 @@
+body {
+    font-size: medium;
+    width: 100%;
+    font-family: Helvetica;
+}
+
+.ui-page {
+    background: #EEEEEE;
+    background: linear-gradient(#EEEEEE, #DDDDDD) repeat scroll 0 0 #F9F9F9;        
+    background: -webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#DDDDDD));
+    background: -moz-linear-gradient(top, #EEEEEE, #DDDDDD);
+}
+
+.ui-content {
+    margin: auto;       
+    background: #ddddFF;
+    padding: 1em;
+}
+
+#footer {
+    border: 0px solid silver;    
+    text-align: center;
+    padding: 0.5em;    
+    background: #EEEEEE;
+    background: linear-gradient(#EEEEEE, #DDDDDD) repeat scroll 0 0 #F9F9F9;
+    background: -webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#DDDDDD));
+    background: -moz-linear-gradient(top, #EEEEEE, #DDDDDD);
+}
+
+#logo{
+    font-size: 150%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    text-align: center;
+}
+
+.ui-li {
+    padding-left: 1em;
+    margin-right: 1em;
+}
+
+.ui-li-divider {
+    padding-left: 2em;
+    margin-right: 0em;
+}
